@@ -8,8 +8,8 @@ COPY client/package*.json ./client/
 COPY server/package*.json ./server/
 
 # Install dependencies
-RUN cd client && npm ci
-RUN cd server && npm ci
+RUN cd client && npm install
+RUN cd server && npm install
 
 # Copy full source
 COPY client/ ./client/
@@ -28,7 +28,7 @@ ENV PORT=10000
 
 # Copy built server and production node_modules
 COPY server/package*.json ./server/
-RUN cd server && npm ci --omit=dev
+RUN cd server && npm install --omit=dev
 
 COPY --from=builder /app/server/dist ./server/dist
 COPY --from=builder /app/client/dist ./client/dist

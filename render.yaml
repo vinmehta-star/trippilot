@@ -14,3 +14,4 @@ services:
         value: dc4b47cac0a34de801652ac312a481e8
       - key: GEMINI_API_KEY
         sync: false
+
