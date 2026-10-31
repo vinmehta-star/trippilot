@@ -76,8 +76,8 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
   res.status(500).json({ error: 'Internal server error' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🌍 TripPilot running on http://localhost:${PORT}`);
+app.listen(Number(PORT), '0.0.0.0', () => {
+  console.log(`🌍 TripPilot running on http://0.0.0.0:${PORT}`);
   console.log(`   Gemini AI: ${process.env.GEMINI_API_KEY ? '✅ Configured' : '⚠️  Not configured (demo mode)'}`);
   console.log(`   Weather:   ${process.env.WEATHER_API_KEY ? '✅ Configured' : '⚠️  Not configured'}`);
   console.log(`   Database:  Auto-Managed JSON Store (${process.env.DB_FILE || 'data/trippilot_db.json'})`);

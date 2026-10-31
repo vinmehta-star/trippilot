@@ -24,7 +24,7 @@ FROM node:20-alpine AS runner
 
 WORKDIR /app
 ENV NODE_ENV=production
-ENV PORT=3001
+ENV PORT=10000
 
 # Copy built server and production node_modules
 COPY server/package*.json ./server/
@@ -32,11 +32,9 @@ RUN cd server && npm ci --omit=dev
 
 COPY --from=builder /app/server/dist ./server/dist
 COPY --from=builder /app/client/dist ./client/dist
+COPY --from=builder /app/server/data ./server/data
 
-# Expose data directory for persistent volume mount
-VOLUME ["/app/server/data"]
-
-EXPOSE 3001
+EXPOSE 10000
 
 CMD ["node", "server/dist/index.js"]
 
