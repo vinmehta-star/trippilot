@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: trippilot
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: WEATHER_API_KEY
+        value: dc4b47cac0a34de801652ac312a481e8
+      - key: GEMINI_API_KEY
+        sync: false
