@@ -1,0 +1,1466 @@
+{
+  "trips": [
+    {
+      "id": "0256efdc-3a31-49a7-9800-34d75a92e9b6",
+      "createdAt": "2026-10-31T09:37:06.340Z",
+      "updatedAt": "2026-10-31T09:37:06.340Z",
+      "request": {
+        "startingCity": "new york",
+        "destination": "Barcelona",
+        "departureDate": "2026-10-31",
+        "returnDate": "2026-11-07",
+        "numberOfTravellers": 3,
+        "totalBudget": 4000,
+        "currency": "USD",
+        "travelStyle": "budget",
+        "interests": [
+          "food",
+          "culture"
+        ],
+        "preferredTransport": [
+          "flight"
+        ],
+        "preferredAccommodation": "hotel",
+        "dietaryRequirements": [],
+        "accessibilityNeeds": "",
+        "additionalNotes": ""
+      },
+      "itinerary": {
+        "destination": "Barcelona",
+        "overview": "A wonderful trip full of exploration, culture, and memorable experiences. Your 7-night trip to Barcelona has been planned to balance your interests in food, culture with your budget travel style.",
+        "days": [
+          {
+            "dayNumber": 1,
+            "date": "2026-10-31",
+            "theme": "Arrival & First Impressions",
+            "activities": [
+              {
+                "name": "City Walking Tour",
+                "description": "Explore the historic city center on foot with a local guide, visiting key landmarks and hidden gems.",
+                "category": "sightseeing",
+                "startTime": "09:00",
+                "durationMinutes": 150,
+                "estimatedCost": 75,
+                "location": {
+                  "name": "City Center"
+                },
+                "imageKeyword": "city tour",
+                "reasonForRecommendation": "Perfect for first-day orientation and cultural immersion.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "1fea85d3-c266-427b-b49f-6d5fe266e6ec"
+              },
+              {
+                "name": "Local Food Market",
+                "description": "Discover the flavors of the region at a bustling local market with dozens of vendors.",
+                "category": "food",
+                "startTime": "12:00",
+                "durationMinutes": 90,
+                "estimatedCost": 60,
+                "location": {
+                  "name": "Central Market"
+                },
+                "imageKeyword": "food market",
+                "reasonForRecommendation": "Best way to taste authentic local cuisine at reasonable prices.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 15,
+                "id": "325f2a55-c94c-4145-8bb3-1328c1632fa5"
+              },
+              {
+                "name": "Cultural Museum",
+                "description": "An impressive museum showcasing the history and art of the region.",
+                "category": "culture",
+                "startTime": "14:30",
+                "durationMinutes": 120,
+                "estimatedCost": 45,
+                "location": {
+                  "name": "National Museum"
+                },
+                "imageKeyword": "museum art",
+                "reasonForRecommendation": "Highly rated by travelers interested in local history and culture.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 10,
+                "id": "f8af5e1d-8b5b-4ab7-94f5-811f63b02c38"
+              },
+              {
+                "name": "Sunset Viewpoint",
+                "description": "Watch the sunset from a scenic viewpoint with panoramic views of the city.",
+                "category": "sightseeing",
+                "startTime": "17:30",
+                "durationMinutes": 60,
+                "estimatedCost": 0,
+                "location": {
+                  "name": "Scenic Viewpoint"
+                },
+                "imageKeyword": "sunset viewpoint",
+                "reasonForRecommendation": "A magical, free experience that should not be missed.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "2bc39e44-43fc-4770-8afe-8dfccb7def40"
+              },
+              {
+                "name": "Traditional Dinner",
+                "description": "Enjoy a traditional evening meal at a well-regarded local restaurant.",
+                "category": "food",
+                "startTime": "19:30",
+                "durationMinutes": 90,
+                "estimatedCost": 105,
+                "location": {
+                  "name": "Old Town Restaurant District"
+                },
+                "imageKeyword": "restaurant dinner",
+                "reasonForRecommendation": "End the day with authentic local flavors in a cozy setting.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 0,
+                "id": "6945fbf0-5981-42da-aafb-6353fac2fa4f"
+              }
+            ],
+            "accommodation": {
+              "type": "hostel",
+              "name": "City Backpackers Hostel",
+              "pricePerNight": 50,
+              "location": {
+                "name": "Barcelona hostel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 2,
+            "date": "2026-11-01",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Morning Yoga / Meditation Session",
+                "description": "Start the day with a calming yoga session at a local studio or park.",
+                "category": "relaxation",
+                "startTime": "07:30",
+                "durationMinutes": 60,
+                "estimatedCost": 30,
+                "location": {
+                  "name": "Local Park / Wellness Studio"
+                },
+                "imageKeyword": "yoga meditation",
+                "reasonForRecommendation": "A rejuvenating start to an activity-filled day.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 15,
+                "id": "d1dfd718-3c9b-4703-9386-14b67d4c63aa"
+              },
+              {
+                "name": "Street Art & Neighborhoods Walk",
+                "description": "Wander through colorful neighborhoods admiring local murals and street art.",
+                "category": "culture",
+                "startTime": "09:30",
+                "durationMinutes": 120,
+                "estimatedCost": 0,
+                "location": {
+                  "name": "Arts District"
+                },
+                "imageKeyword": "street art graffiti",
+                "reasonForRecommendation": "Free, highly photogenic, and gives insight into local culture.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "4474291d-c13f-45c2-bd81-5b942694744e"
+              },
+              {
+                "name": "Cooking Class",
+                "description": "Learn to prepare traditional local dishes from a professional chef.",
+                "category": "food",
+                "startTime": "12:00",
+                "durationMinutes": 180,
+                "estimatedCost": 180,
+                "location": {
+                  "name": "Culinary School / Local Kitchen"
+                },
+                "imageKeyword": "cooking class",
+                "reasonForRecommendation": "An interactive, hands-on way to connect with local food culture.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "35f00a1d-adb1-4aad-9395-df5b59918b91"
+              },
+              {
+                "name": "Evening River Cruise",
+                "description": "See the city from the water on a relaxing evening boat tour.",
+                "category": "relaxation",
+                "startTime": "19:00",
+                "durationMinutes": 90,
+                "estimatedCost": 90,
+                "location": {
+                  "name": "City Waterfront"
+                },
+                "imageKeyword": "river cruise boat",
+                "reasonForRecommendation": "Romantic and scenic; a wonderful way to end the day.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 0,
+                "id": "8dace3c2-9f00-41bc-bddf-949679eb68ca"
+              }
+            ],
+            "accommodation": {
+              "type": "hostel",
+              "name": "City Backpackers Hostel",
+              "pricePerNight": 50,
+              "location": {
+                "name": "Barcelona hostel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 3,
+            "date": "2026-11-02",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 60,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "12cb78f5-c3a1-43f9-ace5-da75ff32a76c"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 150,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "97c7d76e-4b1b-4837-aeee-7b73be9834ac"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 120,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "d0cea764-5629-4390-8bc3-80154b5b02eb"
+              }
+            ],
+            "accommodation": {
+              "type": "hostel",
+              "name": "City Backpackers Hostel",
+              "pricePerNight": 50,
+              "location": {
+                "name": "Barcelona hostel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 4,
+            "date": "2026-11-03",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 60,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "c824d5c5-2470-4178-bb16-92036db456ef"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 150,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "eba5607c-095e-4c1c-94f3-af17faf3a4c7"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 120,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "4ee74f4d-4c33-45ba-95bc-0956664469ff"
+              }
+            ],
+            "accommodation": {
+              "type": "hostel",
+              "name": "City Backpackers Hostel",
+              "pricePerNight": 50,
+              "location": {
+                "name": "Barcelona hostel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 5,
+            "date": "2026-11-04",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 60,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "ba716c6c-b81b-4d24-8ed7-d44cc8d23b1e"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 150,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "6ae3f87a-6974-4cf7-9e4c-f241cda1c1b3"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 120,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "57738ec8-ef87-45d3-8fee-56a012338a78"
+              }
+            ],
+            "accommodation": {
+              "type": "hostel",
+              "name": "City Backpackers Hostel",
+              "pricePerNight": 50,
+              "location": {
+                "name": "Barcelona hostel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 6,
+            "date": "2026-11-05",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 60,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "5bc5ed16-faa4-4b59-9d44-599f26189c75"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 150,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "84010eca-80ed-4fd9-b066-ef74610d6d9a"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 120,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "f441fd7e-314e-4e01-9242-8bee9f778591"
+              }
+            ],
+            "accommodation": {
+              "type": "hostel",
+              "name": "City Backpackers Hostel",
+              "pricePerNight": 50,
+              "location": {
+                "name": "Barcelona hostel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 7,
+            "date": "2026-11-06",
+            "theme": "Last Day & Farewell",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 60,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "71020ac1-769b-4b93-9664-0f51cecc410c"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 150,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "e489b477-cc1c-4b48-8e35-dff818318f7f"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 120,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "54ab3476-0996-4d41-bd5d-2077aeb1113c"
+              }
+            ],
+            "accommodation": {
+              "type": "hostel",
+              "name": "City Backpackers Hostel",
+              "pricePerNight": 50,
+              "location": {
+                "name": "Barcelona hostel area"
+              }
+            }
+          }
+        ],
+        "budgetBreakdown": {
+          "transport": 2160,
+          "accommodation": 420,
+          "food": 576,
+          "activities": 378,
+          "localTransport": 144,
+          "miscellaneous": 288,
+          "emergencyBuffer": 198,
+          "total": 4164,
+          "perPerson": 1388,
+          "currency": "USD",
+          "isOverBudget": true,
+          "overBudgetBy": 164
+        },
+        "packingList": [
+          {
+            "category": "Documents & Money",
+            "items": [
+              {
+                "id": "0d72f067-6988-421a-82d1-ee05579a0709",
+                "name": "Passport / National ID",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "18f49241-efe9-4ef8-b128-a9966353bca2",
+                "name": "Travel insurance documents",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "ee22bb6c-1483-41d7-90f9-0fae4de2657b",
+                "name": "Flight / transport tickets",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "5d4968e7-7463-46e3-b8f0-91d659582c30",
+                "name": "Hotel confirmations",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "a29a9cb1-111a-4215-a21e-2d162ec272ba",
+                "name": "Local currency / travel card",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "f0e56339-ac90-4147-97e7-38b9f24bcea3",
+                "name": "Emergency contact list",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Clothing & Accessories",
+            "items": [
+              {
+                "id": "107b9cc2-2542-484d-9657-bdc4a67749ff",
+                "name": "Comfortable walking shoes",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "35a832c2-5a58-4659-9a1b-e95817debe13",
+                "name": "Weather-appropriate outfits",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "e0db7498-46e5-4fda-9494-75869717106c",
+                "name": "Light jacket / layers",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "655c1dc3-7dea-4eb3-a9a5-f6031041d501",
+                "name": "Swimwear (if applicable)",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "7e5a3968-adc0-4917-8da0-735e8d3cd223",
+                "name": "Sunglasses",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "3a28f611-3241-45bf-9a5a-d19db56625cc",
+                "name": "Hat / cap",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Tech & Gadgets",
+            "items": [
+              {
+                "id": "bcadc9b5-ce06-4d8f-8b8d-0c8068ad009e",
+                "name": "Smartphone & charger",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "77ae21d4-60b1-4218-82b0-eeb3994cba4d",
+                "name": "Universal power adapter",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "8db2fc3d-1d62-415b-b760-6f5dd77fd6a6",
+                "name": "Portable power bank",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "c2871aa9-7e94-4e25-b78e-11401d5fe4cc",
+                "name": "Camera / extra batteries",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "24d87842-5be5-45a5-8264-564d624b0cd2",
+                "name": "Earphones",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Health & Wellness",
+            "items": [
+              {
+                "id": "28e6b9e5-9aac-49e9-9b84-b268d9ba4fe5",
+                "name": "Prescription medications",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "8738011f-ca77-4dfb-8ace-ea4a0653acab",
+                "name": "Basic first aid kit",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "1972d9a1-c7b7-49a2-b9a1-2f7f98311c3e",
+                "name": "Sunscreen SPF 30+",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "93c3d3c4-060b-40fc-9655-6932072cde1d",
+                "name": "Insect repellent",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "63e853ba-073b-4138-b4a3-ad1b58d0efae",
+                "name": "Hand sanitizer",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "9941af34-1b71-44ef-ae9b-90391f0018a6",
+                "name": "Reusable water bottle",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Comfort & Convenience",
+            "items": [
+              {
+                "id": "c5dae0ff-8358-4330-9939-b68c994c5977",
+                "name": "Neck pillow (long flights)",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "2c666fc6-0bca-463f-b4d4-d0a5af0b7fd4",
+                "name": "Snacks for travel",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "bc02e81e-e957-4d75-acba-815fa52962f4",
+                "name": "Reusable shopping bag",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "db5538a5-776a-40d0-a5da-6b93416899d6",
+                "name": "Travel umbrella",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "f790a937-5e73-4afd-bc5c-77bf57d7f1be",
+                "name": "Day pack / small backpack",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          }
+        ],
+        "topTips": [
+          "Always carry a small amount of local currency for street food and small vendors.",
+          "Download offline maps before you go to save data.",
+          "Book major attractions in advance to avoid queues.",
+          "Travel insurance is highly recommended for international trips."
+        ],
+        "localCurrency": "Local Currency",
+        "emergencyContacts": [
+          {
+            "name": "Emergency Services",
+            "number": "112",
+            "type": "Emergency"
+          },
+          {
+            "name": "Tourist Helpline",
+            "number": "1800-XXX-XXXX",
+            "type": "Tourist Support"
+          }
+        ],
+        "isDemo": true
+      },
+      "readinessScore": 65,
+      "packingProgress": 0
+    },
+    {
+      "id": "7dca7f74-f5ce-4326-b483-514939904f07",
+      "createdAt": "2026-10-29T07:54:17.979Z",
+      "updatedAt": "2026-10-29T07:54:17.979Z",
+      "request": {
+        "startingCity": "New York",
+        "destination": "Tokyo",
+        "departureDate": "2025-06-01",
+        "returnDate": "2025-06-07",
+        "numberOfTravellers": 2,
+        "totalBudget": 4000,
+        "currency": "USD",
+        "travelStyle": "balanced",
+        "interests": [
+          "culture",
+          "food",
+          "nature"
+        ],
+        "preferredTransport": [
+          "flight"
+        ],
+        "preferredAccommodation": "hotel",
+        "dietaryRequirements": []
+      },
+      "itinerary": {
+        "destination": "Tokyo",
+        "overview": "A wonderful trip full of exploration, culture, and memorable experiences. Your 6-night trip to Tokyo has been planned to balance your interests in culture, food, nature with your balanced travel style.",
+        "days": [
+          {
+            "dayNumber": 1,
+            "date": "2025-06-01",
+            "theme": "Arrival & First Impressions",
+            "activities": [
+              {
+                "name": "City Walking Tour",
+                "description": "Explore the historic city center on foot with a local guide, visiting key landmarks and hidden gems.",
+                "category": "sightseeing",
+                "startTime": "09:00",
+                "durationMinutes": 150,
+                "estimatedCost": 50,
+                "location": {
+                  "name": "City Center"
+                },
+                "imageKeyword": "city tour",
+                "reasonForRecommendation": "Perfect for first-day orientation and cultural immersion.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "7e285fbd-9b35-4bfd-be76-e5540fcfad61"
+              },
+              {
+                "name": "Local Food Market",
+                "description": "Discover the flavors of the region at a bustling local market with dozens of vendors.",
+                "category": "food",
+                "startTime": "12:00",
+                "durationMinutes": 90,
+                "estimatedCost": 40,
+                "location": {
+                  "name": "Central Market"
+                },
+                "imageKeyword": "food market",
+                "reasonForRecommendation": "Best way to taste authentic local cuisine at reasonable prices.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 15,
+                "id": "5c2649f0-6227-4f52-a1ba-f869a2b46f1f"
+              },
+              {
+                "name": "Cultural Museum",
+                "description": "An impressive museum showcasing the history and art of the region.",
+                "category": "culture",
+                "startTime": "14:30",
+                "durationMinutes": 120,
+                "estimatedCost": 30,
+                "location": {
+                  "name": "National Museum"
+                },
+                "imageKeyword": "museum art",
+                "reasonForRecommendation": "Highly rated by travelers interested in local history and culture.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 10,
+                "id": "428d2b85-d721-47b6-a494-1d15a10cca3b"
+              },
+              {
+                "name": "Sunset Viewpoint",
+                "description": "Watch the sunset from a scenic viewpoint with panoramic views of the city.",
+                "category": "sightseeing",
+                "startTime": "17:30",
+                "durationMinutes": 60,
+                "estimatedCost": 0,
+                "location": {
+                  "name": "Scenic Viewpoint"
+                },
+                "imageKeyword": "sunset viewpoint",
+                "reasonForRecommendation": "A magical, free experience that should not be missed.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "da8554d5-67f0-4d7d-afc7-424e5499d75c"
+              },
+              {
+                "name": "Traditional Dinner",
+                "description": "Enjoy a traditional evening meal at a well-regarded local restaurant.",
+                "category": "food",
+                "startTime": "19:30",
+                "durationMinutes": 90,
+                "estimatedCost": 70,
+                "location": {
+                  "name": "Old Town Restaurant District"
+                },
+                "imageKeyword": "restaurant dinner",
+                "reasonForRecommendation": "End the day with authentic local flavors in a cozy setting.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 0,
+                "id": "ba7365ee-b7e0-4b58-bc3b-c8859085ab65"
+              }
+            ],
+            "accommodation": {
+              "type": "hotel",
+              "name": "Comfort City Hotel",
+              "pricePerNight": 80,
+              "location": {
+                "name": "Tokyo hotel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 2,
+            "date": "2025-06-02",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Morning Yoga / Meditation Session",
+                "description": "Start the day with a calming yoga session at a local studio or park.",
+                "category": "relaxation",
+                "startTime": "07:30",
+                "durationMinutes": 60,
+                "estimatedCost": 20,
+                "location": {
+                  "name": "Local Park / Wellness Studio"
+                },
+                "imageKeyword": "yoga meditation",
+                "reasonForRecommendation": "A rejuvenating start to an activity-filled day.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 15,
+                "id": "27bb55db-9215-4345-8cf4-3bffcb92d279"
+              },
+              {
+                "name": "Street Art & Neighborhoods Walk",
+                "description": "Wander through colorful neighborhoods admiring local murals and street art.",
+                "category": "culture",
+                "startTime": "09:30",
+                "durationMinutes": 120,
+                "estimatedCost": 0,
+                "location": {
+                  "name": "Arts District"
+                },
+                "imageKeyword": "street art graffiti",
+                "reasonForRecommendation": "Free, highly photogenic, and gives insight into local culture.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "b634e5ee-d78c-4749-8c30-137c4de33187"
+              },
+              {
+                "name": "Cooking Class",
+                "description": "Learn to prepare traditional local dishes from a professional chef.",
+                "category": "food",
+                "startTime": "12:00",
+                "durationMinutes": 180,
+                "estimatedCost": 120,
+                "location": {
+                  "name": "Culinary School / Local Kitchen"
+                },
+                "imageKeyword": "cooking class",
+                "reasonForRecommendation": "An interactive, hands-on way to connect with local food culture.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 20,
+                "id": "ce450e97-206f-4559-8ff7-f7bb1d3da034"
+              },
+              {
+                "name": "Evening River Cruise",
+                "description": "See the city from the water on a relaxing evening boat tour.",
+                "category": "relaxation",
+                "startTime": "19:00",
+                "durationMinutes": 90,
+                "estimatedCost": 60,
+                "location": {
+                  "name": "City Waterfront"
+                },
+                "imageKeyword": "river cruise boat",
+                "reasonForRecommendation": "Romantic and scenic; a wonderful way to end the day.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 0,
+                "id": "6d5bd4ba-3a71-4bf5-8863-bd37c585f6d4"
+              }
+            ],
+            "accommodation": {
+              "type": "hotel",
+              "name": "Comfort City Hotel",
+              "pricePerNight": 80,
+              "location": {
+                "name": "Tokyo hotel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 3,
+            "date": "2025-06-03",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 40,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "ca769b4b-b90e-466f-9ae6-7e313e99dc73"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 100,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "571a441c-c482-4d54-b2fa-317856cca2b9"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 80,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "fca8854f-cec3-4cc5-9c21-25e53ff7e098"
+              }
+            ],
+            "accommodation": {
+              "type": "hotel",
+              "name": "Comfort City Hotel",
+              "pricePerNight": 80,
+              "location": {
+                "name": "Tokyo hotel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 4,
+            "date": "2025-06-04",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 40,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "f79ebf68-3676-4bca-98b4-f4b3769c1e77"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 100,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "98c4a8d4-f752-4e27-8e0a-87ea5d1a941a"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 80,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "de326801-d780-4c72-b6fb-4133e91cd142"
+              }
+            ],
+            "accommodation": {
+              "type": "hotel",
+              "name": "Comfort City Hotel",
+              "pricePerNight": 80,
+              "location": {
+                "name": "Tokyo hotel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 5,
+            "date": "2025-06-05",
+            "theme": "Exploration & Discovery",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 40,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "54208774-10fb-4b03-8694-6881c1578fb0"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 100,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "ba3dde3e-f066-4cff-842a-7ff99180879d"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 80,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "1b54f23a-ff79-43ae-b26a-a76d32756f95"
+              }
+            ],
+            "accommodation": {
+              "type": "hotel",
+              "name": "Comfort City Hotel",
+              "pricePerNight": 80,
+              "location": {
+                "name": "Tokyo hotel area"
+              }
+            }
+          },
+          {
+            "dayNumber": 6,
+            "date": "2025-06-06",
+            "theme": "Last Day & Farewell",
+            "activities": [
+              {
+                "name": "Nature Hike or Scenic Trek",
+                "description": "Hike through stunning natural landscapes with panoramic views.",
+                "category": "adventure",
+                "startTime": "08:00",
+                "durationMinutes": 240,
+                "estimatedCost": 40,
+                "location": {
+                  "name": "National Park / Nature Reserve"
+                },
+                "imageKeyword": "hiking nature trail",
+                "reasonForRecommendation": "Perfect for adventure-seekers and nature lovers.",
+                "isOptional": false,
+                "travelTimeToNextMinutes": 45,
+                "id": "d3c27a38-2925-4d51-84fd-669cf1a194eb"
+              },
+              {
+                "name": "Local Craft & Souvenir Shopping",
+                "description": "Browse artisan shops and markets for unique local crafts and keepsakes.",
+                "category": "shopping",
+                "startTime": "15:00",
+                "durationMinutes": 90,
+                "estimatedCost": 100,
+                "location": {
+                  "name": "Artisan Market / Craft District"
+                },
+                "imageKeyword": "souvenir shopping market",
+                "reasonForRecommendation": "Great for picking up authentic handmade souvenirs.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 20,
+                "id": "a7c38775-5c86-42c7-b6aa-e7b60883f03f"
+              },
+              {
+                "name": "Rooftop Bar & Nightlife",
+                "description": "Experience the city's vibrant nightlife at a well-known rooftop bar.",
+                "category": "nightlife",
+                "startTime": "20:00",
+                "durationMinutes": 120,
+                "estimatedCost": 80,
+                "location": {
+                  "name": "City Rooftop Venue"
+                },
+                "imageKeyword": "rooftop bar night",
+                "reasonForRecommendation": "Fantastic city views and a lively atmosphere to end the trip.",
+                "isOptional": true,
+                "travelTimeToNextMinutes": 0,
+                "id": "1c00061c-ec80-4310-ba0c-d56d8c55d799"
+              }
+            ],
+            "accommodation": {
+              "type": "hotel",
+              "name": "Comfort City Hotel",
+              "pricePerNight": 80,
+              "location": {
+                "name": "Tokyo hotel area"
+              }
+            }
+          }
+        ],
+        "budgetBreakdown": {
+          "transport": 1200,
+          "accommodation": 420,
+          "food": 700,
+          "activities": 420,
+          "localTransport": 210,
+          "miscellaneous": 350,
+          "emergencyBuffer": 165,
+          "total": 3465,
+          "perPerson": 1733,
+          "currency": "USD",
+          "isOverBudget": false
+        },
+        "packingList": [
+          {
+            "category": "Documents & Money",
+            "items": [
+              {
+                "id": "4dfa17f1-ea8a-442c-ae57-ce9891fb6574",
+                "name": "Passport / National ID",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "1d56081e-9c3c-4441-acfb-e90933bf7312",
+                "name": "Travel insurance documents",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "ead92c14-3c88-4be9-a1a6-5df7a90f7179",
+                "name": "Flight / transport tickets",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "b78dafad-aaa1-4dbe-a79a-aa0e7752fda0",
+                "name": "Hotel confirmations",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "2b86ef6e-7a22-4eec-b504-748871ab2793",
+                "name": "Local currency / travel card",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "7db6d9ee-a668-4a94-8a91-fb39210e9542",
+                "name": "Emergency contact list",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Clothing & Accessories",
+            "items": [
+              {
+                "id": "2bab7860-bea5-4e4f-aabf-948d8b4c7b2a",
+                "name": "Comfortable walking shoes",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "5dffc57d-77dd-41a1-b397-6cb44bf76241",
+                "name": "Weather-appropriate outfits",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "4cc554fd-25ff-43e0-a600-ec3cfc71ed2c",
+                "name": "Light jacket / layers",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "6041994c-7b98-4047-9dc2-70f4541fe625",
+                "name": "Swimwear (if applicable)",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "75e83c91-ca6e-4739-aa2a-d57c4b03d7d2",
+                "name": "Sunglasses",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "4171e463-b4d2-4dfb-90f0-3c7ecfa556cb",
+                "name": "Hat / cap",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Tech & Gadgets",
+            "items": [
+              {
+                "id": "71aadf18-db1e-4aca-8d6b-5d762d6e0e5f",
+                "name": "Smartphone & charger",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "68862291-1b6d-42fe-9947-0de4d11443d5",
+                "name": "Universal power adapter",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "402accb8-e424-4ba3-b116-d513630c0239",
+                "name": "Portable power bank",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "199bc540-586e-4ef0-ab7d-a1c8c13dd70d",
+                "name": "Camera / extra batteries",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "3edb40bf-6ea9-4574-ad89-3bd53344221d",
+                "name": "Earphones",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Health & Wellness",
+            "items": [
+              {
+                "id": "4c0cd415-7ade-40cc-b0c3-9b5daa8ad8c5",
+                "name": "Prescription medications",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "c4b231b1-b880-4946-861d-75885b7ae663",
+                "name": "Basic first aid kit",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "2651e12d-29f1-4934-a572-d811197c56a5",
+                "name": "Sunscreen SPF 30+",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "13625937-c67b-4d8b-ba5a-4501349f6520",
+                "name": "Insect repellent",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "b5508ff4-2892-472f-9a8d-12072364f6cd",
+                "name": "Hand sanitizer",
+                "checked": false,
+                "essential": true
+              },
+              {
+                "id": "9a3c0253-c727-4ce0-9cd5-8b1679062dbb",
+                "name": "Reusable water bottle",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          },
+          {
+            "category": "Comfort & Convenience",
+            "items": [
+              {
+                "id": "55da5ac9-f6c1-4813-b4c6-8628dade1659",
+                "name": "Neck pillow (long flights)",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "d6d3829c-a74a-4039-a970-d1757a51c341",
+                "name": "Snacks for travel",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "eda0467a-f942-4908-b313-adb527fae1be",
+                "name": "Reusable shopping bag",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "20287cb4-c180-48dc-87e1-dd29bc6cea6f",
+                "name": "Travel umbrella",
+                "checked": false,
+                "essential": false
+              },
+              {
+                "id": "54789468-bb54-4caa-a8ef-ff1e24e77870",
+                "name": "Day pack / small backpack",
+                "checked": false,
+                "essential": false
+              }
+            ]
+          }
+        ],
+        "topTips": [
+          "Always carry a small amount of local currency for street food and small vendors.",
+          "Download offline maps before you go to save data.",
+          "Book major attractions in advance to avoid queues.",
+          "Travel insurance is highly recommended for international trips."
+        ],
+        "localCurrency": "Local Currency",
+        "emergencyContacts": [
+          {
+            "name": "Emergency Services",
+            "number": "112",
+            "type": "Emergency"
+          },
+          {
+            "name": "Tourist Helpline",
+            "number": "1800-XXX-XXXX",
+            "type": "Tourist Support"
+          }
+        ],
+        "isDemo": true
+      },
+      "readinessScore": 85,
+      "packingProgress": 0
+    }
+  ],
+  "preferences": {},
+  "users": [
+    {
+      "id": "usr-alex-mercer",
+      "name": "Alex Mercer",
+      "email": "alex@trippilot.ai",
+      "passwordHash": "explorer123",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "travelStyle": "balanced",
+      "homeCity": "San Francisco, CA",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "usr-227ce72a",
+      "name": "Test Traveler",
+      "email": "test@travel.com",
+      "passwordHash": "secretpassword",
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80",
+      "travelStyle": "luxury",
+      "homeCity": "New York, USA",
+      "createdAt": "2026-10-31T10:20:28.635Z"
+    }
+  ]
+}
