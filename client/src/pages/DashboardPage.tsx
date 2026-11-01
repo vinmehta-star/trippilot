@@ -446,8 +446,8 @@ export default function DashboardPage() {
               </div>
             </div>
             <div className="h-[620px] w-full rounded-2xl overflow-hidden border border-white/10">
-              <Suspense fallback={<div className="h-full w-full skeleton flex items-center justify-center">Loading Dark CartoDB Map...</div>}>
-                <TripMap days={itinerary.days} />
+              <Suspense fallback={<div className="h-full w-full skeleton flex items-center justify-center font-mono text-xs text-white/50">Loading Interactive Route Map...</div>}>
+                <TripMap days={itinerary.days} destination={request.destination || itinerary.destination} />
               </Suspense>
             </div>
           </div>

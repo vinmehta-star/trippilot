@@ -3,6 +3,7 @@ import { TripRequest, Itinerary, ItinerarySchema, NLEditRequest } from '../types
 import { calculateBudget } from '../utils/budgetEngine';
 import { generateDemoItinerary } from '../utils/demoData';
 import { differenceInDays, addDays, getDayName } from '../utils/dateUtils';
+import { enrichItineraryCoordinates, resolveLocation } from '../utils/cityCoordinates';
 import { v4 as uuidv4 } from 'uuid';
 
 let genAI: GoogleGenerativeAI | null = null;
@@ -282,6 +283,9 @@ export async function generateItinerary(request: TripRequest): Promise<Itinerary
     validated.budgetBreakdown = budgetBreakdown;
     validated.isDemo = false;
 
+    // Guarantee all coordinates are populated with realistic geography
+    enrichItineraryCoordinates(validated);
+
     console.log(`[TripPilot] Successfully generated live Gemini AI itinerary for ${request.destination}!`);
     return validated;
   } catch (error: any) {
@@ -317,7 +321,30 @@ export async function processNLEdit(req: NLEditRequest): Promise<{
     const prompt = NL_EDIT_PROMPT(req);
     const rawText = await callGemini(prompt, true);
     const jsonText = cleanJsonText(rawText);
-    return JSON.parse(jsonText);
+    const result = JSON.parse(jsonText);
+
+    if (result.changes && Array.isArray(result.changes)) {
+      result.changes.forEach((ch: any, idx: number) => {
+        if (ch.newActivity) {
+          if (!ch.newActivity.id) ch.newActivity.id = uuidv4();
+          if (!ch.newActivity.location) {
+            ch.newActivity.location = { name: req.tripRequest.destination };
+          }
+          if (ch.newActivity.location.lat == null || ch.newActivity.location.lng == null) {
+            const coords = resolveLocation(
+              req.tripRequest.destination,
+              ch.newActivity.location.name || ch.newActivity.name,
+              ch.dayNumber || 1,
+              idx
+            );
+            ch.newActivity.location.lat = coords.lat;
+            ch.newActivity.location.lng = coords.lng;
+          }
+        }
+      });
+    }
+
+    return result;
   } catch (error: any) {
     console.error('[TripPilot] NL Edit error:', error?.message || error);
     return {

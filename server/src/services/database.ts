@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { SavedTrip } from '../types';
+import { enrichItineraryCoordinates } from '../utils/cityCoordinates';
 
 const DB_DIR = process.env.DATA_DIR || path.join(__dirname, '../../data');
 const DB_FILE = process.env.DB_FILE || path.join(DB_DIR, 'trippilot_db.json');
@@ -49,6 +50,13 @@ function loadData(): Schema {
     if (!parsed.users || !Array.isArray(parsed.users) || parsed.users.length === 0) {
       parsed.users = [DEFAULT_DEMO_USER];
     }
+    if (parsed.trips && Array.isArray(parsed.trips)) {
+      parsed.trips.forEach((trip) => {
+        if (trip.itinerary) {
+          enrichItineraryCoordinates(trip.itinerary);
+        }
+      });
+    }
     return parsed as Schema;
   } catch (err) {
     console.error('[TripPilot DB] Error loading database file:', err);
@@ -74,6 +82,10 @@ export function saveTrip(trip: Omit<SavedTrip, 'id' | 'createdAt' | 'updatedAt'>
   const id = uuidv4();
   const now = new Date().toISOString();
 
+  if (trip.itinerary) {
+    enrichItineraryCoordinates(trip.itinerary);
+  }
+
   const newTrip: SavedTrip = {
     id,
     createdAt: now,
@@ -96,6 +108,10 @@ export function updateTrip(
   const data = loadData();
   const index = data.trips.findIndex(t => t.id === id);
   if (index === -1) return null;
+
+  if (updates.itinerary) {
+    enrichItineraryCoordinates(updates.itinerary);
+  }
 
   const existing = data.trips[index];
   const updated: SavedTrip = {

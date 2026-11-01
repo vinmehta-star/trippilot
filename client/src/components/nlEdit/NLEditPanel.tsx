@@ -197,16 +197,14 @@ export default function NLEditPanel({ tripId, currentItinerary, tripRequest, onA
                   <div
                     key={i}
                     onClick={() => toggleChange(i)}
-                    className={`flex items-start gap-3 p-3.5 rounded-xl border transition-all cursor-pointer ${
-                      isAccepted
-                        ? 'bg-white/[0.06] border-[#00E5A0]/40'
-                        : 'bg-white/[0.01] border-white/10 opacity-40'
-                    }`}
+                    className={`flex items-start gap-3 p-3.5 rounded-xl border transition-all cursor-pointer ${isAccepted
+                      ? 'bg-white/[0.06] border-[#00E5A0]/40'
+                      : 'bg-white/[0.01] border-white/10 opacity-40'
+                      }`}
                   >
                     <div
-                      className={`w-5 h-5 rounded-md flex-shrink-0 flex items-center justify-center mt-0.5 text-xs font-bold ${
-                        isAccepted ? 'bg-[#00E5A0] text-[#050507]' : 'bg-white/10 text-white/40'
-                      }`}
+                      className={`w-5 h-5 rounded-md flex-shrink-0 flex items-center justify-center mt-0.5 text-xs font-bold ${isAccepted ? 'bg-[#00E5A0] text-[#050507]' : 'bg-white/10 text-white/40'
+                        }`}
                     >
                       {isAccepted ? <Check size={12} /> : <X size={12} />}
                     </div>
@@ -214,13 +212,12 @@ export default function NLEditPanel({ tripId, currentItinerary, tripRequest, onA
                     <div className="flex-1 min-w-0 text-xs space-y-1">
                       <div className="flex items-center gap-2">
                         <span
-                          className={`text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded ${
-                            change.type === 'remove'
-                              ? 'bg-[#FF4757]/20 text-[#FF4757]'
-                              : change.type === 'add'
+                          className={`text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded ${change.type === 'remove'
+                            ? 'bg-[#FF4757]/20 text-[#FF4757]'
+                            : change.type === 'add'
                               ? 'bg-[#00E5A0]/20 text-[#00E5A0]'
                               : 'bg-[#00D4FF]/20 text-[#00D4FF]'
-                          }`}
+                            }`}
                         >
                           {change.type}
                         </span>

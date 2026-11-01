@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { CATEGORY_ICONS } from '../../types';
 import type { Day } from '../../types';
+import { resolveLocation, getCityCenter } from '../../utils/cityCoordinates';
 
 // Fix default icon path issues with webpack/vite
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -64,53 +65,74 @@ function BoundsFitter({ markers }: { markers: MarkerData[] }) {
 interface TripMapProps {
   days: Day[];
   center?: [number, number];
+  destination?: string;
 }
 
-const TripMap: React.FC<TripMapProps> = ({ days, center = [20, 0] }) => {
-  const markers: MarkerData[] = [];
+const TripMap: React.FC<TripMapProps> = ({ days, center, destination = 'Paris' }) => {
+  const cityCenter = useMemo(() => getCityCenter(destination), [destination]);
 
-  days.forEach((day) => {
-    day.activities.forEach((activity) => {
-      if (activity.location.lat != null && activity.location.lng != null) {
-        markers.push({
-          lat: activity.location.lat,
-          lng: activity.location.lng,
-          label: String(day.dayNumber),
+  const markers: MarkerData[] = useMemo(() => {
+    const list: MarkerData[] = [];
+    if (!days || days.length === 0) return list;
+
+    days.forEach((day) => {
+      if (Array.isArray(day.activities)) {
+        day.activities.forEach((activity, actIdx) => {
+          let lat = activity.location?.lat;
+          let lng = activity.location?.lng;
+
+          // If coordinates are missing, undefined or invalid, resolve via city geocoding registry
+          if (lat == null || lng == null || isNaN(lat) || isNaN(lng)) {
+            const locName = activity.location?.name || activity.name || '';
+            const resolved = resolveLocation(destination, locName, day.dayNumber, actIdx);
+            lat = resolved.lat;
+            lng = resolved.lng;
+          }
+
+          list.push({
+            lat,
+            lng,
+            label: String(day.dayNumber),
+            dayNumber: day.dayNumber,
+            cost: activity.estimatedCost,
+            category: activity.category,
+            type: 'activity',
+          });
+        });
+      }
+
+      if (day.accommodation) {
+        let lat = day.accommodation.location?.lat;
+        let lng = day.accommodation.location?.lng;
+
+        if (lat == null || lng == null || isNaN(lat) || isNaN(lng)) {
+          lat = Number((cityCenter.lat - 0.003).toFixed(6));
+          lng = Number((cityCenter.lng + 0.002).toFixed(6));
+        }
+
+        list.push({
+          lat,
+          lng,
+          label: '🛏️',
           dayNumber: day.dayNumber,
-          cost: activity.estimatedCost,
-          category: activity.category,
-          type: 'activity',
+          cost: day.accommodation.pricePerNight,
+          category: 'accommodation',
+          type: 'accommodation',
         });
       }
     });
 
-    if (
-      day.accommodation &&
-      day.accommodation.location.lat != null &&
-      day.accommodation.location.lng != null
-    ) {
-      markers.push({
-        lat: day.accommodation.location.lat!,
-        lng: day.accommodation.location.lng!,
-        label: '🛏️',
-        dayNumber: day.dayNumber,
-        cost: day.accommodation.pricePerNight,
-        category: 'accommodation',
-        type: 'accommodation',
-      });
-    }
-  });
+    return list;
+  }, [days, destination, cityCenter]);
 
   const hasMarkers = markers.length > 0;
-  const initialCenter: [number, number] = hasMarkers
-    ? [markers[0].lat, markers[0].lng]
-    : center;
+  const initialCenter: [number, number] = center || (hasMarkers ? [markers[0].lat, markers[0].lng] : [cityCenter.lat, cityCenter.lng]);
 
   return (
     <div className="relative w-full h-full min-h-[420px] rounded-2xl overflow-hidden border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.6)]">
       <MapContainer
         center={initialCenter}
-        zoom={hasMarkers ? 12 : 2}
+        zoom={hasMarkers ? 13 : 12}
         scrollWheelZoom
         style={{ width: '100%', height: '100%', minHeight: 420, backgroundColor: '#07070d' }}
       >

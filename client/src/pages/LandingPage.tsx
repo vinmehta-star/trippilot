@@ -135,7 +135,7 @@ export default function LandingPage() {
       <section className="relative min-h-[92vh] flex items-center pt-8 md:pt-16 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
+
             {/* Left Col: Hero Copy & Quick Search Bar */}
             <div className="lg:col-span-7 space-y-8 text-left">
               {/* Badge */}
@@ -246,7 +246,7 @@ export default function LandingPage() {
 
               {/* Main Floating Glass Card */}
               <div className="card p-6 md:p-7 border border-white/15 bg-[#0a0a16]/80 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] space-y-6 relative overflow-hidden">
-                
+
                 {/* Header Row */}
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -410,11 +410,10 @@ export default function LandingPage() {
               <button
                 key={arch.id}
                 onClick={() => setActiveArchetype(arch)}
-                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer relative overflow-hidden ${
-                  isSelected
-                    ? 'bg-white/[0.08] border-[#FF6B35] shadow-[0_0_30px_rgba(255,107,53,0.2)]'
-                    : 'bg-white/[0.02] border-white/10 hover:bg-white/[0.05] hover:border-white/20'
-                }`}
+                className={`p-4 rounded-2xl border text-left transition-all cursor-pointer relative overflow-hidden ${isSelected
+                  ? 'bg-white/[0.08] border-[#FF6B35] shadow-[0_0_30px_rgba(255,107,53,0.2)]'
+                  : 'bg-white/[0.02] border-white/10 hover:bg-white/[0.05] hover:border-white/20'
+                  }`}
               >
                 <span className="text-2xl mb-2 block">{arch.emoji}</span>
                 <p className="font-bold text-white text-base">{arch.title}</p>
