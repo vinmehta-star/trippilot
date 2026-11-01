@@ -20,6 +20,7 @@ import PackingChecklist from '../components/packing/PackingChecklist';
 import ReadinessScore from '../components/readiness/ReadinessScore';
 import WeatherWidget from '../components/weather/WeatherWidget';
 import NLEditPanel from '../components/nlEdit/NLEditPanel';
+import PrintDossier from '../components/itinerary/PrintDossier';
 
 const TripMap = lazy(() => import('../components/map/TripMap'));
 
@@ -104,8 +105,13 @@ export default function DashboardPage() {
   const selectedDay = itinerary.days.find(d => d.dayNumber === selectedDayNumber) || itinerary.days[0];
 
   return (
-    <div className="min-h-screen bg-transparent text-[#e0e0ec] pb-24 relative">
-      <DemoBanner isDemo={itinerary.isDemo} />
+    <>
+      {/* ─── High-Contrast Travel Dossier (Visible ONLY when Printing / Exporting to PDF) ─── */}
+      <PrintDossier trip={currentTrip} />
+
+      {/* ─── Interactive Cyber-Luxe Dashboard (Screen View Only) ─── */}
+      <div className="print:hidden min-h-screen bg-transparent text-[#e0e0ec] pb-24 relative">
+        <DemoBanner isDemo={itinerary.isDemo} />
 
       {/* ══════════════════════════════════════════════════════════════════════
           HERO BANNER: Sunset Cyber-Luxe Identity
@@ -506,5 +512,6 @@ export default function DashboardPage() {
         />
       )}
     </div>
+    </>
   );
 }

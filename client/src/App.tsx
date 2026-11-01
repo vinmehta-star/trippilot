@@ -16,13 +16,17 @@ const AuthPage = lazy(() => import('./pages/AuthPage'));
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col bg-transparent text-[#e0e0ec] relative selection:bg-[#FF6B35]/30 selection:text-white">
+      <div className="min-h-screen flex flex-col bg-transparent text-[#e0e0ec] relative selection:bg-[#FF6B35]/30 selection:text-white print:bg-white print:text-gray-900">
         {/* Layered cinematic travel background atmosphere */}
-        <BackgroundAtmosphere />
+        <div className="print:hidden">
+          <BackgroundAtmosphere />
+        </div>
 
-        <Navbar />
+        <div className="print:hidden">
+          <Navbar />
+        </div>
 
-        <main className="flex-1 relative z-10">
+        <main className="flex-1 relative z-10 print:z-0 print:p-0">
           <Suspense fallback={<LoadingSpinner message="Igniting TripPilot Engine..." />}>
             <Routes>
               <Route path="/" element={<LandingPage />} />
@@ -36,7 +40,9 @@ function App() {
           </Suspense>
         </main>
 
-        <Footer />
+        <div className="print:hidden">
+          <Footer />
+        </div>
 
         <Toaster
           position="top-right"

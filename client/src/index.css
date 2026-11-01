@@ -440,3 +440,32 @@
   color: #e0e0ec !important;
   border: 1px solid rgba(255,255,255,0.1) !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRINT & PDF EXPORT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media print {
+  @page {
+    margin: 12mm;
+    size: A4 portrait;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #111827 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Force hide all interactive web elements */
+  header, footer, nav, .no-print, [data-no-print], .leaflet-container {
+    display: none !important;
+  }
+
+  /* Ensure card backgrounds and borders print with high fidelity */
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
