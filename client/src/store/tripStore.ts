@@ -51,8 +51,30 @@ export const useTripStore = create<TripStore>()(
       fetchTrips: async () => {
         set({ isLoading: true, error: null });
         try {
-          const { trips } = await api.getTrips();
-          set({ trips, isLoading: false });
+          const { trips: serverTrips } = await api.getTrips();
+          const localTrips = get().trips || [];
+
+          // Merge: prioritize server trips, but preserve any local trips missing on server
+          const serverMap = new Map(serverTrips.map(t => [t.id, t]));
+          const missingOnServer: SavedTrip[] = [];
+
+          localTrips.forEach(lt => {
+            if (!serverMap.has(lt.id)) {
+              serverMap.set(lt.id, lt);
+              missingOnServer.push(lt);
+            }
+          });
+
+          const merged = Array.from(serverMap.values()).sort(
+            (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+          );
+
+          set({ trips: merged, isLoading: false });
+
+          // Background sync to server if container lost them
+          if (missingOnServer.length > 0) {
+            api.syncTrips(missingOnServer).catch(() => {});
+          }
         } catch (e: any) {
           set({ error: e.message, isLoading: false });
         }
@@ -64,7 +86,14 @@ export const useTripStore = create<TripStore>()(
           const { trip, readinessScore, readinessFactors } = await api.getTrip(id);
           set({ currentTrip: trip, readinessScore, readinessFactors, isLoading: false });
         } catch (e: any) {
-          set({ error: e.message, isLoading: false });
+          // Check local cached trip in store if server was fresh deployed
+          const localMatch = get().trips.find(t => t.id === id);
+          if (localMatch) {
+            set({ currentTrip: localMatch, isLoading: false });
+            api.syncTrips([localMatch]).catch(() => {});
+          } else {
+            set({ error: e.message, isLoading: false });
+          }
         }
       },
 

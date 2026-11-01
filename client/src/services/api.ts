@@ -82,6 +82,11 @@ export const api = {
     return data as { success: boolean };
   },
 
+  syncTrips: async (trips: SavedTrip[]) => {
+    const { data } = await client.post('/trips/sync', { trips });
+    return data as { status: string; count: number };
+  },
+
   // Weather
   getWeather: async (destination: string, startDate: string) => {
     const { data } = await client.get('/weather', { params: { destination, startDate } });

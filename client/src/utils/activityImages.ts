@@ -182,3 +182,4 @@ export function getActivityImage(activity: {
 
   return pool[idx] || pool[0];
 }
+

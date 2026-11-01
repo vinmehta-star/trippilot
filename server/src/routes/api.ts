@@ -19,6 +19,8 @@ import {
   findUserById,
   createUser,
   verifyCredentials,
+  restoreUser,
+  saveTripWithId,
 } from '../services/database';
 
 const router = express.Router();
@@ -33,6 +35,45 @@ router.get('/status', (_req, res) => {
   });
 });
 
+// ─── Token Persistence Helpers ────────────────────────────────────────────────
+function generateAuthToken(user: any): string {
+  const payload = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    avatar: user.avatar,
+    travelStyle: user.travelStyle,
+    homeCity: user.homeCity,
+    passwordHash: user.passwordHash,
+    createdAt: user.createdAt,
+    iat: Date.now(),
+  };
+  return `tp_token_${Buffer.from(JSON.stringify(payload)).toString('base64url')}`;
+}
+
+function parseAuthToken(token: string): any {
+  const clean = token.replace('tp_token_', '');
+  try {
+    const raw = Buffer.from(clean, 'base64url').toString('utf-8');
+    if (raw.startsWith('{')) {
+      return JSON.parse(raw);
+    }
+    const [userId] = raw.split(':');
+    return { id: userId };
+  } catch {
+    try {
+      const raw = Buffer.from(clean, 'base64').toString('utf-8');
+      if (raw.startsWith('{')) {
+        return JSON.parse(raw);
+      }
+      const [userId] = raw.split(':');
+      return { id: userId };
+    } catch {
+      return null;
+    }
+  }
+}
+
 // ─── Authentication Routes ────────────────────────────────────────────────────
 router.post('/auth/register', (req, res) => {
   try {
@@ -43,7 +84,7 @@ router.post('/auth/register', (req, res) => {
     }
 
     const newUser = createUser(payload);
-    const token = `tp_token_${Buffer.from(newUser.id + ':' + Date.now()).toString('base64')}`;
+    const token = generateAuthToken(newUser);
 
     return res.status(201).json({
       user: {
@@ -74,7 +115,7 @@ router.post('/auth/login', (req, res) => {
       return res.status(401).json({ error: 'Invalid email or password. Use demo account or create a new one.' });
     }
 
-    const token = `tp_token_${Buffer.from(user.id + ':' + Date.now()).toString('base64')}`;
+    const token = generateAuthToken(user);
 
     return res.json({
       user: {
@@ -104,9 +145,26 @@ router.get('/auth/me', (req, res) => {
 
   const token = authHeader.split(' ')[1];
   try {
-    const raw = Buffer.from(token.replace('tp_token_', ''), 'base64').toString('ascii');
-    const [userId] = raw.split(':');
-    const user = findUserById(userId);
+    const payload = parseAuthToken(token);
+    if (!payload || !payload.id) {
+      return res.status(401).json({ error: 'Invalid authentication token structure' });
+    }
+
+    let user = findUserById(payload.id);
+
+    // If container redeployed, rehydrate user into server database from verified token payload!
+    if (!user && payload.email) {
+      user = restoreUser({
+        id: payload.id,
+        name: payload.name || 'Traveler',
+        email: payload.email,
+        passwordHash: payload.passwordHash,
+        avatar: payload.avatar,
+        travelStyle: payload.travelStyle,
+        homeCity: payload.homeCity,
+        createdAt: payload.createdAt,
+      });
+    }
 
     if (!user) {
       return res.status(401).json({ error: 'Session expired or invalid user' });
@@ -126,6 +184,23 @@ router.get('/auth/me', (req, res) => {
     });
   } catch {
     return res.status(401).json({ error: 'Invalid authentication token' });
+  }
+});
+
+// ─── Sync Trips Route (Survives Ephemeral Teardowns) ───────────────────────────
+router.post('/trips/sync', (req, res) => {
+  try {
+    const { trips } = req.body;
+    if (Array.isArray(trips)) {
+      trips.forEach((t) => {
+        if (t && t.id && t.request && t.itinerary) {
+          saveTripWithId(t);
+        }
+      });
+    }
+    return res.json({ status: 'ok', count: getAllTrips().length });
+  } catch (err: any) {
+    return res.status(400).json({ error: err.message || 'Sync failed' });
   }
 });
 
