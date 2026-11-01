@@ -182,3 +182,4 @@ export function resolveLocation(
     lng: Number((center.lng + lngOffset).toFixed(6)),
   };
 }
+

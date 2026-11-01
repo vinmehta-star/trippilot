@@ -221,3 +221,4 @@ export function enrichItineraryCoordinates<T extends { days: any[]; destination:
 
   return itinerary;
 }
+

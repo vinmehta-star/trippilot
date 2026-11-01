@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Pencil,
   Trash2,
@@ -12,6 +12,7 @@ import {
   Footprints
 } from 'lucide-react';
 import { Activity, CATEGORY_ICONS } from '../../types';
+import { getActivityImage } from '../../utils/activityImages';
 
 interface ActivityCardProps {
   activity: Activity;
@@ -37,19 +38,6 @@ const CATEGORY_THEMES: Record<string, { color: string; border: string; bg: strin
   transport: { color: '#e0e0ec', border: 'border-white/20', bg: 'bg-white/10' },
 };
 
-// Reliable curated travel photos
-const CATEGORY_IMAGES: Record<string, string> = {
-  sightseeing: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=600&q=80',
-  adventure: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80',
-  food: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80',
-  culture: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=600&q=80',
-  shopping: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80',
-  nature: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80',
-  nightlife: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80',
-  relaxation: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80',
-  transport: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80',
-};
-
 const ActivityCard: React.FC<ActivityCardProps> = ({
   activity,
   currency = '$',
@@ -61,10 +49,11 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   isLast,
 }) => {
   const [expanded, setExpanded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const theme = CATEGORY_THEMES[activity.category] || CATEGORY_THEMES.sightseeing;
   const categoryIcon = CATEGORY_ICONS[activity.category] || '📍';
-  const imgUrl = CATEGORY_IMAGES[activity.category] || CATEGORY_IMAGES.sightseeing;
+  const resolvedImgUrl = useMemo(() => getActivityImage(activity), [activity]);
 
   const formatDuration = (minutes: number) => {
     if (minutes < 60) return `${minutes}m`;
@@ -76,11 +65,12 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   return (
     <div className="group rounded-2xl bg-[#0b0b14] border border-white/10 hover:border-white/20 transition-all duration-300 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
       <div className="flex flex-col sm:flex-row">
-        {/* Thumbnail on left */}
-        <div className="relative sm:w-44 h-32 sm:h-auto flex-shrink-0 overflow-hidden bg-black/40">
+        {/* Thumbnail on left with real photo and smooth fallback */}
+        <div className="relative sm:w-44 h-36 sm:h-auto flex-shrink-0 overflow-hidden bg-black/50">
           <img
-            src={imgUrl}
+            src={imageError ? 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80' : resolvedImgUrl}
             alt={activity.name}
+            onError={() => setImageError(true)}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/80 sm:from-transparent to-transparent" />
