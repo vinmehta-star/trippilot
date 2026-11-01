@@ -22,13 +22,13 @@ const Footer: React.FC = () => {
             </Link>
 
             <p className="text-sm text-white/50 max-w-md leading-relaxed">
-              The next-generation adaptive travel intelligence platform. Powered by Google Gemini and deterministic budgeting algorithms that adapt to flight delays, bad weather, and real-time budget adjustments.
+              The next-generation adaptive travel intelligence platform. Powered by advanced AI neural models and deterministic budgeting algorithms that adapt to flight delays, bad weather, and real-time budget adjustments.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs text-white/70 font-mono">
-                <Terminal size={12} className="text-[#00E5A0]" />
-                Gemini 1.5 Flash Verified
+                <Sparkles size={12} className="text-[#00E5A0]" />
+                Adaptive AI Engine Verified
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs text-white/70 font-mono">
                 <Shield size={12} className="text-[#00D4FF]" />

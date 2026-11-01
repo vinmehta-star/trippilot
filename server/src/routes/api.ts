@@ -27,9 +27,11 @@ const router = express.Router();
 
 // ─── Health / Status ───────────────────────────────────────────────────────────
 router.get('/status', (_req, res) => {
+  const isAiOnline = isGeminiAvailable();
   res.json({
     status: 'ok',
-    geminiAvailable: isGeminiAvailable(),
+    aiAvailable: isAiOnline,
+    geminiAvailable: isAiOnline,
     weatherAvailable: !!process.env.WEATHER_API_KEY,
     timestamp: new Date().toISOString(),
   });

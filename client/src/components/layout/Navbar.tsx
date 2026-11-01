@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [tripCount, setTripCount] = useState(0);
   const [scrolled, setScrolled] = useState(false);
-  const [geminiOnline, setGeminiOnline] = useState<boolean | null>(null);
+  const [aiOnline, setAiOnline] = useState<boolean | null>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
@@ -34,10 +34,10 @@ const Navbar: React.FC = () => {
     let mounted = true;
     api.getStatus()
       .then(res => {
-        if (mounted) setGeminiOnline(!!res.geminiAvailable);
+        if (mounted) setAiOnline(!!res.aiAvailable);
       })
       .catch(() => {
-        if (mounted) setGeminiOnline(false);
+        if (mounted) setAiOnline(false);
       });
     return () => { mounted = false; };
   }, []);
@@ -139,27 +139,28 @@ const Navbar: React.FC = () => {
         {/* Right side CTAs */}
         <div className="flex items-center gap-3">
           {/* Live Engine Status */}
-          {geminiOnline !== null && (
+          {aiOnline !== null && (
             <div className={`hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs backdrop-blur-sm transition-all duration-300 ${
-              geminiOnline
+              aiOnline
                 ? 'bg-[#00E5A0]/10 border-[#00E5A0]/25 shadow-[0_0_12px_rgba(0,229,160,0.15)]'
                 : 'bg-[#FFB547]/10 border-[#FFB547]/25 shadow-[0_0_12px_rgba(255,181,71,0.15)]'
             }`}>
               <span className="relative flex h-2 w-2">
-                {geminiOnline && (
+                {aiOnline && (
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00E5A0] opacity-75"></span>
                 )}
                 <span className={`relative inline-flex rounded-full h-2 w-2 ${
-                  geminiOnline ? 'bg-[#00E5A0]' : 'bg-[#FFB547]'
+                  aiOnline ? 'bg-[#00E5A0]' : 'bg-[#FFB547]'
                 }`}></span>
               </span>
-              <span className="font-mono text-white/60 text-[11px]">
-                {geminiOnline ? 'Gemini AI' : 'Planner'}
+              <span className="font-mono text-white/60 text-[11px] flex items-center gap-1">
+                <Sparkles size={11} className={aiOnline ? 'text-[#00E5A0]' : 'text-[#FFB547]'} />
+                AI Engine
               </span>
               <span className={`font-semibold text-[11px] ${
-                geminiOnline ? 'text-[#00E5A0]' : 'text-[#FFB547]'
+                aiOnline ? 'text-[#00E5A0]' : 'text-[#FFB547]'
               }`}>
-                {geminiOnline ? 'Live Online' : 'Demo Mode'}
+                {aiOnline ? 'Active' : 'Standby'}
               </span>
             </div>
           )}

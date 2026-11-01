@@ -29,7 +29,7 @@ export const api = {
   // Status
   getStatus: async () => {
     const { data } = await client.get('/status');
-    return data as { geminiAvailable: boolean; weatherAvailable: boolean; timestamp: string };
+    return data as { aiAvailable?: boolean; weatherAvailable: boolean; timestamp: string };
   },
 
   // Itinerary generation

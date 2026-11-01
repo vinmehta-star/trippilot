@@ -127,7 +127,9 @@ export default function MyTripsPage() {
                       {trip.itinerary?.isDemo ? (
                         <span className="badge badge-amber text-[10px] font-mono">Demo AI</span>
                       ) : (
-                        <span className="badge badge-teal text-[10px] font-mono">Gemini Live</span>
+                        <span className="badge badge-teal text-[10px] font-mono flex items-center gap-1">
+                          <Sparkles size={10} /> AI Live
+                        </span>
                       )}
                     </div>
 

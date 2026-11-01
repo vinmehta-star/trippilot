@@ -643,7 +643,7 @@ function StepSummary({
           {isGenerating ? (
             <div className="flex items-center gap-3">
               <Loader2 size={20} className="animate-spin text-white" />
-              <span>Synthesizing Gemini Itinerary...</span>
+              <span>Synthesizing AI Itinerary...</span>
             </div>
           ) : (
             <div className="flex items-center gap-2">

@@ -586,7 +586,7 @@ export default function LandingPage() {
             },
             {
               step: '03',
-              title: 'Gemini Synthesis',
+              title: 'AI Neural Synthesis',
               desc: 'Generates structured, validated day-by-day itineraries with opening hours and verified locations.',
               icon: Sparkles,
               color: '#845EC2',

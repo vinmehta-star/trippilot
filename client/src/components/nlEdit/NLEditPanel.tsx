@@ -104,7 +104,7 @@ export default function NLEditPanel({ tripId, currentItinerary, tripRequest, onA
               Conversational Itinerary Refinement
             </h3>
             <p className="text-xs text-white/50">
-              Command Gemini in natural language to replace, prune, or enrich stops without disrupting day flow.
+              Command TripPilot AI in natural language to replace, prune, or enrich stops without disrupting day flow.
             </p>
           </div>
         </div>
@@ -112,7 +112,9 @@ export default function NLEditPanel({ tripId, currentItinerary, tripRequest, onA
         {currentItinerary.isDemo ? (
           <span className="badge badge-amber text-xs font-mono">Demo AI</span>
         ) : (
-          <span className="badge badge-teal text-xs font-mono">Gemini 1.5 Live</span>
+          <span className="badge badge-teal text-xs font-mono flex items-center gap-1">
+            <Sparkles size={11} /> Adaptive AI Live
+          </span>
         )}
       </div>
 
@@ -159,7 +161,7 @@ export default function NLEditPanel({ tripId, currentItinerary, tripRequest, onA
         <div className="flex items-center gap-3 p-4 bg-white/[0.03] border border-white/10 rounded-2xl">
           <Loader2 size={20} className="animate-spin text-[#FF6B35]" />
           <div>
-            <p className="font-bold text-white text-sm">Gemini AI is analyzing schedule and budget impacts...</p>
+            <p className="font-bold text-white text-sm">TripPilot AI is analyzing schedule and budget impacts...</p>
             <p className="text-xs text-white/40 font-mono">Synthesizing verified replacements</p>
           </div>
         </div>
