@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
-  Compass, Calendar, DollarSign, MapPin, PackageCheck, CloudSun, Sparkles,
+  Compass, Calendar, Wallet, MapPin, PackageCheck, CloudSun, Sparkles,
   ArrowLeft, Share2, Printer, Plus, AlertCircle, Info, CheckCircle2, ShieldAlert,
   Flame, Zap, Clock, Users, ArrowUpRight
 } from 'lucide-react';
@@ -206,7 +206,7 @@ export default function DashboardPage() {
             {[
               { id: 'overview', label: 'Overview', icon: Compass },
               { id: 'itinerary', label: 'Daily Timeline', icon: Calendar },
-              { id: 'budget', label: 'Budget Engine', icon: DollarSign },
+              { id: 'budget', label: 'Budget Engine', icon: Wallet },
               { id: 'map', label: 'Route Map', icon: MapPin },
               { id: 'packing', label: 'Smart Packing', icon: PackageCheck },
               { id: 'weather', label: 'Weather & Plan B', icon: CloudSun },
