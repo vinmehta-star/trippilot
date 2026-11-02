@@ -14,7 +14,7 @@ import {
   CURRENCIES, WizardFormData
 } from '../types';
 import { estimateBudget } from '../utils/budgetCalc';
-import { formatCurrency } from '../utils/helpers';
+import { formatCurrency, getCurrencySymbol } from '../utils/helpers';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -71,6 +71,14 @@ const STEP_NAMES = [
 
 const TOTAL_STEPS = 8;
 
+const getInitialCurrency = () => {
+  try {
+    return localStorage.getItem('trippilot_preferred_currency') || 'USD';
+  } catch {
+    return 'USD';
+  }
+};
+
 const initialForm: WizardFormData = {
   step: 1,
   startingCity: '',
@@ -78,8 +86,8 @@ const initialForm: WizardFormData = {
   departureDate: '',
   returnDate: '',
   numberOfTravellers: 2,
-  totalBudget: 2500,
-  currency: 'USD',
+  totalBudget: getInitialCurrency() === 'INR' ? 50000 : getInitialCurrency() === 'JPY' ? 100000 : 2500,
+  currency: getInitialCurrency(),
   travelStyle: 'balanced',
   interests: ['food', 'culture'],
   preferredTransport: ['flight'],
@@ -320,10 +328,17 @@ function StepTravellers({ form, update }: { form: WizardFormData; update: (p: Pa
 }
 
 function StepBudget({ form, update }: { form: WizardFormData; update: (p: Partial<WizardFormData>) => void }) {
-  const budget = form.totalBudget ?? 2000;
   const currency = form.currency ?? 'USD';
+  const budget = form.totalBudget ?? (currency === 'INR' ? 50000 : 2500);
+  const currSymbol = getCurrencySymbol(currency);
   const travellers = form.numberOfTravellers ?? 1;
   const perPerson = Math.round(budget / travellers);
+
+  const quickPicks = React.useMemo(() => {
+    if (currency === 'INR') return [25000, 50000, 100000, 200000, 400000];
+    if (currency === 'JPY') return [50000, 100000, 200000, 400000, 800000];
+    return [800, 1500, 2500, 4000, 7500];
+  }, [currency]);
 
   return (
     <div className="space-y-6">
@@ -332,7 +347,21 @@ function StepBudget({ form, update }: { form: WizardFormData; update: (p: Partia
           <label className="label">Currency</label>
           <select
             value={currency}
-            onChange={(e) => update({ currency: e.target.value })}
+            onChange={(e) => {
+              const newCur = e.target.value;
+              try {
+                localStorage.setItem('trippilot_preferred_currency', newCur);
+              } catch {}
+              const updates: Partial<WizardFormData> = { currency: newCur };
+              if (newCur === 'INR' && budget < 10000) {
+                updates.totalBudget = 50000;
+              } else if (newCur === 'JPY' && budget < 10000) {
+                updates.totalBudget = 100000;
+              } else if ((newCur === 'USD' || newCur === 'EUR' || newCur === 'GBP') && budget > 15000) {
+                updates.totalBudget = 2500;
+              }
+              update(updates);
+            }}
             className="input-field font-mono font-bold bg-[#12121e]"
           >
             {CURRENCIES.map((c) => (
@@ -346,7 +375,9 @@ function StepBudget({ form, update }: { form: WizardFormData; update: (p: Partia
         <div className="col-span-2 space-y-2">
           <label className="label">Total Trip Budget</label>
           <div className="relative">
-            <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#00E5A0]" />
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono font-bold text-base text-[#00E5A0]">
+              {currSymbol}
+            </span>
             <input
               type="number"
               step="50"
@@ -371,7 +402,7 @@ function StepBudget({ form, update }: { form: WizardFormData; update: (p: Partia
       <div className="space-y-2 pt-1">
         <span className="text-xs font-mono text-white/40 block">Quick Preset Budgets:</span>
         <div className="flex flex-wrap gap-2">
-          {BUDGET_QUICK_PICKS.map((b) => (
+          {quickPicks.map((b) => (
             <button
               key={b}
               type="button"
@@ -382,7 +413,7 @@ function StepBudget({ form, update }: { form: WizardFormData; update: (p: Partia
                   : 'bg-white/[0.04] text-white/70 hover:text-white border border-white/10'
               }`}
             >
-              ${b}
+              {formatCurrency(b, currency)}
             </button>
           ))}
         </div>

@@ -375,6 +375,7 @@ export default function DashboardPage() {
             {/* Selected Day Timeline */}
             <DayTimeline
               day={selectedDay}
+              currency={request.currency}
               onActivityEdit={(act) => setEditingActivity({ dayNumber: selectedDay.dayNumber, activity: act })}
               onActivityDelete={(actId) => removeActivity(selectedDay.dayNumber, actId)}
               onAddActivity={() => setEditingActivity({ dayNumber: selectedDay.dayNumber, activity: null })}
@@ -389,7 +390,11 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2 card p-6 sm:p-7 border-white/10 bg-[#0a0a14]">
                 <h3 className="section-title text-xl mb-4">Expenditure Breakdown & Donut</h3>
-                <BudgetChart breakdown={itinerary.budgetBreakdown} totalBudget={request.totalBudget} />
+                <BudgetChart
+                  breakdown={itinerary.budgetBreakdown}
+                  totalBudget={request.totalBudget}
+                  currency={request.currency}
+                />
               </div>
 
               <div className="card p-6 border-white/10 bg-[#0a0a14] space-y-4">
@@ -447,7 +452,11 @@ export default function DashboardPage() {
             </div>
             <div className="h-[620px] w-full rounded-2xl overflow-hidden border border-white/10">
               <Suspense fallback={<div className="h-full w-full skeleton flex items-center justify-center font-mono text-xs text-white/50">Loading Interactive Route Map...</div>}>
-                <TripMap days={itinerary.days} destination={request.destination || itinerary.destination} />
+                <TripMap
+                  days={itinerary.days}
+                  destination={request.destination || itinerary.destination}
+                  currency={request.currency}
+                />
               </Suspense>
             </div>
           </div>
@@ -507,6 +516,7 @@ export default function DashboardPage() {
         <ActivityEditModal
           isOpen={true}
           activity={editingActivity.activity}
+          currency={request.currency}
           onClose={() => setEditingActivity(null)}
           onSave={handleSaveModalActivity}
         />

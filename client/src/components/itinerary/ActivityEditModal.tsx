@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Modal from '../ui/Modal';
 import { Activity, ActivityCategory, CATEGORY_ICONS } from '../../types';
+import { getCurrencySymbol } from '../../utils/helpers';
 
 interface ActivityEditModalProps {
   activity: Activity | null;
   isOpen: boolean;
+  currency?: string;
   onClose: () => void;
   onSave: (activity: Activity) => void;
 }
@@ -33,6 +35,7 @@ const EMPTY_ACTIVITY: Activity = {
 const ActivityEditModal: React.FC<ActivityEditModalProps> = ({
   activity,
   isOpen,
+  currency = 'USD',
   onClose,
   onSave,
 }) => {
@@ -156,7 +159,7 @@ const ActivityEditModal: React.FC<ActivityEditModalProps> = ({
             )}
           </div>
           <div className="space-y-1.5">
-            <label className="label">Estimated Cost ($)</label>
+            <label className="label">Estimated Cost ({getCurrencySymbol(currency)})</label>
             <input
               type="number"
               className="input-field font-mono text-[#00E5A0]"

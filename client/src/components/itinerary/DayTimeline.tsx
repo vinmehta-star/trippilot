@@ -2,9 +2,11 @@ import React from 'react';
 import { Plus, BedDouble, DollarSign, Clock, Sparkles } from 'lucide-react';
 import { Day, Activity } from '../../types';
 import ActivityCard from './ActivityCard';
+import { formatCurrency } from '../../utils/helpers';
 
 interface DayTimelineProps {
   day: Day;
+  currency?: string;
   onActivityEdit: (activity: Activity) => void;
   onActivityDelete: (id: string) => void;
   onAddActivity: () => void;
@@ -13,6 +15,7 @@ interface DayTimelineProps {
 
 const DayTimeline: React.FC<DayTimelineProps> = ({
   day,
+  currency = 'USD',
   onActivityEdit,
   onActivityDelete,
   onAddActivity,
@@ -63,7 +66,7 @@ const DayTimeline: React.FC<DayTimelineProps> = ({
         <div className="flex items-center gap-4 text-xs font-mono self-start sm:self-auto">
           <div className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/10">
             <span className="text-white/40 mr-1.5">Day Est:</span>
-            <span className="font-bold text-[#00E5A0]">${dayTotal.toLocaleString()}</span>
+            <span className="font-bold text-[#00E5A0]">{formatCurrency(dayTotal, currency)}</span>
           </div>
 
           <button
@@ -97,6 +100,7 @@ const DayTimeline: React.FC<DayTimelineProps> = ({
             <ActivityCard
               key={activity.id}
               activity={activity}
+              currency={currency}
               isFirst={index === 0}
               isLast={index === day.activities.length - 1}
               onEdit={() => onActivityEdit(activity)}
@@ -125,7 +129,7 @@ const DayTimeline: React.FC<DayTimelineProps> = ({
 
             <div className="font-mono text-right">
               <span className="text-[10px] text-white/40 block">Est. Nightly Rate</span>
-              <span className="text-sm font-bold text-white">${day.accommodation.pricePerNight} / night</span>
+              <span className="text-sm font-bold text-white">{formatCurrency(day.accommodation.pricePerNight, currency)} / night</span>
             </div>
           </div>
         )}

@@ -12,6 +12,7 @@ import {
   Zap
 } from 'lucide-react';
 import { BudgetBreakdown } from '../../types';
+import { formatCurrency, getCurrencySymbol } from '../../utils/helpers';
 
 interface BudgetSimulatorProps {
   breakdown: BudgetBreakdown;
@@ -149,7 +150,7 @@ const BudgetSimulator: React.FC<BudgetSimulatorProps> = ({
                       : 'bg-[#FF6B35]/15 text-[#FF6B35] border border-[#FF6B35]/30'
                   }`}
                 >
-                  {isSave ? `-${currency}${Math.abs(sDelta)}` : `+${currency}${sDelta}`}
+                  {isSave ? `-${getCurrencySymbol(currency)}${Math.abs(sDelta).toLocaleString()}` : `+${getCurrencySymbol(currency)}${sDelta.toLocaleString()}`}
                 </span>
               </div>
 
@@ -176,13 +177,13 @@ const BudgetSimulator: React.FC<BudgetSimulatorProps> = ({
             <div className="flex items-center gap-6 font-mono">
               <div>
                 <span className="text-[10px] text-white/40 block">Current Baseline</span>
-                <span className="text-sm font-bold text-white">${breakdown.total.toLocaleString()}</span>
+                <span className="text-sm font-bold text-white">{formatCurrency(breakdown.total, currency)}</span>
               </div>
               <span className="text-white/20 text-xl">➔</span>
               <div>
                 <span className="text-[10px] text-white/40 block">Simulated Total</span>
                 <span className={`text-xl font-black ${isSimulatedOver ? 'text-[#FF4757]' : 'text-[#00E5A0]'}`}>
-                  ${simulatedTotal.toLocaleString()}
+                  {formatCurrency(simulatedTotal, currency)}
                 </span>
               </div>
             </div>
@@ -192,7 +193,7 @@ const BudgetSimulator: React.FC<BudgetSimulatorProps> = ({
             <span>
               Net Impact:{' '}
               <strong className={delta < 0 ? 'text-[#00E5A0]' : 'text-[#FF6B35]'}>
-                {delta < 0 ? `Saves $${Math.abs(delta).toLocaleString()}` : `Adds $${delta.toLocaleString()}`}
+                {delta < 0 ? `Saves ${formatCurrency(Math.abs(delta), currency)}` : `Adds ${formatCurrency(delta, currency)}`}
               </strong>
             </span>
             <button

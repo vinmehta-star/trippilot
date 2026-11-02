@@ -8,10 +8,12 @@ import {
 } from 'recharts';
 import { AlertTriangle, TrendingUp, ShieldCheck } from 'lucide-react';
 import { BudgetBreakdown } from '../../types';
+import { formatCurrency } from '../../utils/helpers';
 
 interface BudgetChartProps {
   breakdown: BudgetBreakdown;
   totalBudget: number;
+  currency?: string;
 }
 
 const CATEGORIES = [
@@ -52,8 +54,8 @@ const CustomTooltip = ({
   );
 };
 
-const BudgetChart: React.FC<BudgetChartProps> = ({ breakdown, totalBudget }) => {
-  const currency = breakdown.currency;
+const BudgetChart: React.FC<BudgetChartProps> = ({ breakdown, totalBudget, currency: propCurrency }) => {
+  const currency = propCurrency || breakdown.currency || 'USD';
   const spent = breakdown.total;
   const utilization = totalBudget > 0 ? (spent / totalBudget) * 100 : 0;
   const isOver = breakdown.isOverBudget;
@@ -118,7 +120,7 @@ const BudgetChart: React.FC<BudgetChartProps> = ({ breakdown, totalBudget }) => 
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
           <span className="text-[10px] font-mono uppercase tracking-widest text-white/40">EST. TOTAL</span>
           <span className="text-2xl font-black font-mono text-white tracking-tight">
-            ${spent.toLocaleString()}
+            {formatCurrency(spent, currency)}
           </span>
           <span className="text-[10px] font-mono font-bold" style={{ color: utilizationColor }}>
             {Math.round(utilization)}% of Cap
@@ -158,7 +160,7 @@ const BudgetChart: React.FC<BudgetChartProps> = ({ breakdown, totalBudget }) => 
               <span className="text-white/70 truncate">{d.name}</span>
             </div>
             <span className="font-mono font-bold text-white text-[11px] ml-2">
-              ${d.value.toLocaleString()}
+              {formatCurrency(d.value, currency)}
             </span>
           </div>
         ))}

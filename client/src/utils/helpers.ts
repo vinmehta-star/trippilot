@@ -1,15 +1,30 @@
-import { BudgetBreakdown, Activity, Day, Itinerary } from '../types';
+import { BudgetBreakdown, Activity, Day, Itinerary, CURRENCIES } from '../types';
 
-export function formatCurrency(amount: number, currency: string): string {
+export function getCurrencySymbol(currency: string = 'USD'): string {
+  const code = (currency || 'USD').toUpperCase();
+  const match = CURRENCIES.find(c => c.code === code);
+  if (match) return match.symbol;
+  try {
+    const formatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: code })
+      .formatToParts(0)
+      .find(p => p.type === 'currency');
+    return formatted ? formatted.value : code;
+  } catch {
+    return code;
+  }
+}
+
+export function formatCurrency(amount: number, currency: string = 'USD'): string {
   try {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency,
+      currency: currency || 'USD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
   } catch {
-    return `${currency} ${amount.toLocaleString()}`;
+    const sym = getCurrencySymbol(currency);
+    return `${sym} ${amount.toLocaleString()}`;
   }
 }
 

@@ -4,6 +4,7 @@ import L from 'leaflet';
 import { CATEGORY_ICONS } from '../../types';
 import type { Day } from '../../types';
 import { resolveLocation, getCityCenter } from '../../utils/cityCoordinates';
+import { formatCurrency } from '../../utils/helpers';
 
 // Fix default icon path issues with webpack/vite
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -66,9 +67,10 @@ interface TripMapProps {
   days: Day[];
   center?: [number, number];
   destination?: string;
+  currency?: string;
 }
 
-const TripMap: React.FC<TripMapProps> = ({ days, center, destination = 'Paris' }) => {
+const TripMap: React.FC<TripMapProps> = ({ days, center, destination = 'Paris', currency = 'USD' }) => {
   const cityCenter = useMemo(() => getCityCenter(destination), [destination]);
 
   const markers: MarkerData[] = useMemo(() => {
@@ -175,7 +177,7 @@ const TripMap: React.FC<TripMapProps> = ({ days, center, destination = 'Paris' }
                     <span>Day {m.dayNumber}</span>
                     {m.cost > 0 && (
                       <span className="font-bold text-[#00E5A0]">
-                        ~${m.cost.toLocaleString()}
+                        ~{formatCurrency(m.cost, currency)}
                       </span>
                     )}
                   </div>

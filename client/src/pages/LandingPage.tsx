@@ -6,6 +6,8 @@ import {
   Clock, Zap, Calendar, Users, Plane, CheckCircle2, ChevronRight,
   TrendingDown, CloudSun, Eye, Layers, Star
 } from 'lucide-react';
+import { formatCurrency } from '../utils/helpers';
+import { useTripStore } from '../store/tripStore';
 
 const POPULAR_DESTINATIONS = [
   {
@@ -14,7 +16,7 @@ const POPULAR_DESTINATIONS = [
     tagline: 'Cyberpunk skylines & historic serene shrines',
     imageUrl: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80',
     tags: ['Culinary', 'Culture', 'Nightlife'],
-    estCost: '$1,850',
+    costUSD: 1850,
     weather: 'Sunny · 21°C',
     days: 6,
   },
@@ -24,7 +26,7 @@ const POPULAR_DESTINATIONS = [
     tagline: 'World-renowned bistros, art & sunset vistas',
     imageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80',
     tags: ['Art & Museums', 'Romance', 'Cafes'],
-    estCost: '$2,100',
+    costUSD: 2100,
     weather: 'Mild · 18°C',
     days: 5,
   },
@@ -34,7 +36,7 @@ const POPULAR_DESTINATIONS = [
     tagline: 'Emerald terraced hills & coastal rejuvenation',
     imageUrl: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80',
     tags: ['Wellness', 'Beaches', 'Temples'],
-    estCost: '$1,150',
+    costUSD: 1150,
     weather: 'Tropical · 29°C',
     days: 7,
   },
@@ -44,7 +46,7 @@ const POPULAR_DESTINATIONS = [
     tagline: 'Gaudí surrealism, Mediterranean tapas & beaches',
     imageUrl: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80',
     tags: ['Architecture', 'Tapas', 'Vibrant'],
-    estCost: '$1,650',
+    costUSD: 1650,
     weather: 'Clear · 24°C',
     days: 5,
   },
@@ -54,7 +56,7 @@ const POPULAR_DESTINATIONS = [
     tagline: 'Electric Broadway energy & legendary gastronomy',
     imageUrl: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80',
     tags: ['Urban', 'Broadway', 'Skyline'],
-    estCost: '$2,400',
+    costUSD: 2400,
     weather: 'Crisp · 17°C',
     days: 4,
   },
@@ -64,7 +66,7 @@ const POPULAR_DESTINATIONS = [
     tagline: 'Volcanic cliffside panoramas & Aegean sunsets',
     imageUrl: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80',
     tags: ['Sunsets', 'Wine', 'Seaside'],
-    estCost: '$1,950',
+    costUSD: 1950,
     weather: 'Sunny · 26°C',
     days: 5,
   },
@@ -113,6 +115,11 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const [quickPrompt, setQuickPrompt] = useState('');
   const [activeArchetype, setActiveArchetype] = useState(ARCHETYPES[0]);
+
+  const userTripCurrency = useTripStore((s) => s.currentTrip?.request?.currency || (s.trips.length > 0 ? s.trips[0].request?.currency : null));
+  const activeCurrency = userTripCurrency || (typeof window !== 'undefined' ? localStorage.getItem('trippilot_preferred_currency') : null) || 'USD';
+  const isINR = activeCurrency === 'INR';
+  const isJPY = activeCurrency === 'JPY';
 
   const handleQuickSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -275,7 +282,10 @@ export default function LandingPage() {
                   <div className="flex justify-between items-center text-xs">
                     <span className="font-semibold text-white/80">Estimated Cost vs Target</span>
                     <span className="font-mono font-bold text-[#00E5A0]">
-                      $2,480 <span className="text-white/40 font-normal">/ $3,000</span>
+                      {formatCurrency(isINR ? 205000 : isJPY ? 380000 : 2480, activeCurrency)}{' '}
+                      <span className="text-white/40 font-normal">
+                        / {formatCurrency(isINR ? 250000 : isJPY ? 450000 : 3000, activeCurrency)}
+                      </span>
                     </span>
                   </div>
                   {/* Progress bar */}
@@ -287,7 +297,9 @@ export default function LandingPage() {
                   </div>
                   <div className="flex justify-between items-center text-[10px] text-white/40 font-mono">
                     <span>82.6% Allocated</span>
-                    <span className="text-[#00E5A0] font-bold">+$520 Safety Buffer Left</span>
+                    <span className="text-[#00E5A0] font-bold">
+                      +{formatCurrency(isINR ? 45000 : isJPY ? 70000 : 520, activeCurrency)} Safety Buffer Left
+                    </span>
                   </div>
                 </div>
 
@@ -318,7 +330,9 @@ export default function LandingPage() {
                           <p className="font-bold text-white">Tsukiji Seafood & Wagyu Tasting</p>
                           <p className="text-[10px] text-white/40">12:30 PM • 1.5h • Food & Dining</p>
                         </div>
-                        <span className="font-mono text-[11px] text-white font-bold">$38 est.</span>
+                        <span className="font-mono text-[11px] text-white font-bold">
+                          ~{formatCurrency(isINR ? 3150 : isJPY ? 5800 : 38, activeCurrency)} est.
+                        </span>
                       </div>
                     </div>
 
@@ -329,7 +343,9 @@ export default function LandingPage() {
                           <p className="font-bold text-white">Shibuya Sky Rooftop Sunset</p>
                           <p className="text-[10px] text-white/40">05:30 PM • 1.5h • Panorama</p>
                         </div>
-                        <span className="font-mono text-[11px] text-white font-bold">$18 est.</span>
+                        <span className="font-mono text-[11px] text-white font-bold">
+                          ~{formatCurrency(isINR ? 1500 : isJPY ? 2750 : 18, activeCurrency)} est.
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -513,7 +529,9 @@ export default function LandingPage() {
                 {/* Est Cost pill overlay */}
                 <div className="absolute bottom-3 left-4">
                   <span className="text-[10px] uppercase font-mono tracking-wider text-white/60 block">Est. 5-Day Plan</span>
-                  <span className="text-lg font-black text-[#00E5A0]">{dest.estCost}</span>
+                  <span className="text-lg font-black text-[#00E5A0]">
+                    {formatCurrency(isINR ? dest.costUSD * 83 : isJPY ? dest.costUSD * 155 : dest.costUSD, activeCurrency)}
+                  </span>
                 </div>
               </div>
 

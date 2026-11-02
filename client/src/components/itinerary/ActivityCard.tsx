@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Activity, CATEGORY_ICONS } from '../../types';
 import { getActivityImage } from '../../utils/activityImages';
+import { getCurrencySymbol } from '../../utils/helpers';
 
 interface ActivityCardProps {
   activity: Activity;
@@ -40,7 +41,7 @@ const CATEGORY_THEMES: Record<string, { color: string; border: string; bg: strin
 
 const ActivityCard: React.FC<ActivityCardProps> = ({
   activity,
-  currency = '$',
+  currency = 'USD',
   onEdit,
   onDelete,
   onMoveUp,
@@ -153,7 +154,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
               {activity.estimatedCost === 0 ? (
                 <span className="text-[#00E5A0]">FREE</span>
               ) : (
-                <span className="text-white">~${activity.estimatedCost} <span className="text-[10px] text-white/40 font-normal">est.</span></span>
+                <span className="text-white">~{getCurrencySymbol(currency)}{activity.estimatedCost.toLocaleString()} <span className="text-[10px] text-white/40 font-normal">est.</span></span>
               )}
             </span>
           </div>
